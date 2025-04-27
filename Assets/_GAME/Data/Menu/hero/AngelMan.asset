@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1801e1af303c154bad66f9745b433d8, type: 3}
+  m_Name: AngelMan
+  m_EditorClassIdentifier: 
+  cardName: Male Angel
+  heroIcon: {fileID: -5368462910810119155, guid: 1778e132e662a4a4396ba3943464c417, type: 3}
+  cardType: 2
+  baseUpgradeCost: 10
+  range: 0.5
+  damage: 60
+  health: 350
+  cooldown: 1
+  moveSpeed: 0.3
+  undergroundRange: -50
+  specialStatName: He has no special powers.
+  specialStat: 0
+  cardDescription: "The Male Angel fires a single hit that deals area of \u200B\u200Beffect
+    damage up close. He can hit multiple enemies at once."

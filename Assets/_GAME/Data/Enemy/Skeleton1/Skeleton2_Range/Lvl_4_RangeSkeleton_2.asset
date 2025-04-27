@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cafd4d174a19eaa429c84ac86a200ff9, type: 3}
+  m_Name: Lvl_4_RangeSkeleton_2
+  m_EditorClassIdentifier: 
+  enemyName: Range Skeleton
+  enemyImage: {fileID: 5025148291701961715, guid: 391a9596a531d8342bb70941a29ae1ef, type: 3}
+  enemyLevel: 4
+  attackType: Range
+  isAreaOfEffect: 0
+  maxHealth: 200
+  damage: 80
+  range: 2
+  moveSpeed: 0.2
+  cooldown: 1

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd25a96bd5861bc4898ce8c4eae25b02, type: 3}
+  m_Name: HookStrenght
+  m_EditorClassIdentifier: 
+  upgradeType: 2
+  upgradeIcon: {fileID: 21300000, guid: fe76fc7db4acaf4419681cae6f505ddc, type: 3}
+  upgradeName: Hook Strength
+  upgradeDescription: Increase hook strength by 10 meters.
+  amount: 1
