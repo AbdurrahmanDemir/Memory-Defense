@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609bf97961fb8d440bfaaead65eebf75, type: 3}
+  m_Name: MemoryCard 1
+  m_EditorClassIdentifier: 
+  cardName: Angel2
+  cardImage: {fileID: 2492140069377176967, guid: 8a51b5b7f7bcb314ab66de64bd2e11bd, type: 3}
+  damage: 2
+  cardEffect: 1
+  effectValue: 1
+  cardEffectDescription: Angel2
+  baseUpgradeCost: 10

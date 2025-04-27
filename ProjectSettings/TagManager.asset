@@ -14,6 +14,7 @@ TagManager:
   - GemText
   - ParticleManager
   - EnemyTower
+  - MemoryCardManager
   layers:
   - Default
   - TransparentFX
