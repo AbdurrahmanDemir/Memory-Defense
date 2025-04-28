@@ -35,9 +35,6 @@ public abstract class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        Hook.onThrowStarting += OnThrowStartingCallBack;
-        Hook.onThrowEnding += OnThrowEndingCallBack;
-
         UpgradeSelectManager.onPowerUpPanelOpened += OnThrowStartingCallBack;
         UpgradeSelectManager.onPowerUpPanelClosed += OnThrowEndingCallBack;
 
@@ -47,9 +44,6 @@ public abstract class Enemy : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Hook.onThrowStarting -= OnThrowStartingCallBack;
-        Hook.onThrowEnding -= OnThrowEndingCallBack;
-
         UpgradeSelectManager.onPowerUpPanelOpened -= OnThrowStartingCallBack;
         UpgradeSelectManager.onPowerUpPanelClosed -= OnThrowEndingCallBack;
 
@@ -190,7 +184,6 @@ public abstract class Enemy : MonoBehaviour
         {
             Debug.Log("enemy öldü");
             onDead?.Invoke(transform.position);
-            HookManager.instance.AddToken(10);
             GameManager.enemyCount++;
             Debug.Log("ENEMY COUNT: " + GameManager.enemyCount);
             Destroy(gameObject);

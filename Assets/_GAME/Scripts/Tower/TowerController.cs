@@ -82,10 +82,8 @@ public class TowerController : MonoBehaviour
 
     public void TowerUpgrade()
     {
-        if(HookManager.instance.TryPurchaseToken(HookManager.instance.costs[HookManager.instance.offlineEarnings - 3]))
+        if(DataManager.instance.TryPurchaseEnergy(0))
         {
-            HookManager.instance.BuyOfflineEarnings();
-
             health += 100;
             healthSlider.value = health;
             healthText.text = health.ToString();

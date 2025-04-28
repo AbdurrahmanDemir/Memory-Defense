@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 609bf97961fb8d440bfaaead65eebf75, type: 3}
-  m_Name: MemoryCard 1
+  m_Name: trap
   m_EditorClassIdentifier: 
-  cardName: Range Angel
-  cardImage: {fileID: 2492140069377176967, guid: 8a51b5b7f7bcb314ab66de64bd2e11bd, type: 3}
+  cardName: trap
+  cardImage: {fileID: 21300000, guid: 78711ed6bf9804974a5265512b8cbf62, type: 3}
   damage: 2
-  cardEffect: 1
+  cardEffect: 5
   effectValue: 1
   cardEffectDescription: Angel2
   baseUpgradeCost: 10

@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] allHeroes;
     [SerializeField] private Transform[] creatHeroPosition;
     [SerializeField] private Transform heroParent;
-    [SerializeField] private Hook hook;
     [Header("Settings")]
     [SerializeField] private Slider powerUpSlider;
     [SerializeField] private int[] powerUpLevel;
@@ -28,12 +27,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Hook.onThrowEnding += CreatHeroes;
+        MemoryCardManager.OnMatchHero += CreatHeroes;
         Enemy.onDead += PowerUpSliderUpdate;
     }
     private void OnDestroy()
     {
-        Hook.onThrowEnding -= CreatHeroes;
+         MemoryCardManager.OnMatchHero -= CreatHeroes;
         Enemy.onDead -= PowerUpSliderUpdate;
 
     }
@@ -42,24 +41,30 @@ public class GameManager : MonoBehaviour
         powerUpSlider.value = 0;
         powerUpSlider.maxValue = powerUpLevel[powerUpIndex];
     }
-    public void CreatHeroes()
+    public void CreatHeroes(string name)
     {
-        for (int i = 0; i < hook.hookedHero.Count; i++)
-        {            
-            switch (hook.hookedHero[i].GetHeroName())
+        for (int i = 0; i < 1; i++)
+        {
+            switch (name)
             {
                 case "Angel":
                     int RandomPos = Random.Range(0, creatHeroPosition.Length);
                     Instantiate(allHeroes[0], creatHeroPosition[RandomPos].position, Quaternion.Euler(0f, 0f, 0f), heroParent);
+                    Debug.Log("çalýþtý");
+
                     break;
                 case "Range Angel":
                     int RandomPos1 = Random.Range(0, creatHeroPosition.Length);
                     Instantiate(allHeroes[1], creatHeroPosition[RandomPos1].position, Quaternion.Euler(0f, 0f, 0f), heroParent);
+                    Debug.Log("çalýþtý");
+
 
                     break;
                 case "Angel Man":
                     int RandomPos2 = Random.Range(0, creatHeroPosition.Length);
                     Instantiate(allHeroes[2], creatHeroPosition[RandomPos2].position, Quaternion.Euler(0f, 0f, 0f), heroParent);
+                    Debug.Log("çalýþtý");
+
                     break;
                 case "Ice Golem":
                     int RandomPos3 = Random.Range(0, creatHeroPosition.Length);

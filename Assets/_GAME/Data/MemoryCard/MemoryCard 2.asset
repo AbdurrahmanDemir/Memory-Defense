@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 609bf97961fb8d440bfaaead65eebf75, type: 3}
-  m_Name: MemoryCard 1
+  m_Name: MemoryCard 2
   m_EditorClassIdentifier: 
-  cardName: Range Angel
+  cardName: Angel Man
   cardImage: {fileID: 2492140069377176967, guid: 8a51b5b7f7bcb314ab66de64bd2e11bd, type: 3}
   damage: 2
   cardEffect: 1

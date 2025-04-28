@@ -33,17 +33,11 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        Hook.onThrowStarting += StartingThrow;
-        Hook.onThrowEnding += EndingThrow;
-
         TowerController.onGameLose += GameLosePanel;
         EnemyTowerController.onGameWin += GameWinPanel;
     }
     private void OnDestroy()
     {
-        Hook.onThrowStarting -= StartingThrow;
-        Hook.onThrowEnding -= EndingThrow;
-
         TowerController.onGameLose -= GameLosePanel;
         EnemyTowerController.onGameWin -= GameWinPanel;
 

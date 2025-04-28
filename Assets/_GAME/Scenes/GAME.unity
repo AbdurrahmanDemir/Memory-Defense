@@ -760,7 +760,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 85604426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -768,15 +768,13 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_ChildAlignment: 1
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 212, y: 276}
+  m_Spacing: {x: 20, y: 30}
+  m_Constraint: 1
+  m_ConstraintCount: 4
 --- !u!1 &91486292
 GameObject:
   m_ObjectHideFlags: 0
@@ -6638,7 +6636,6 @@ MonoBehaviour:
   - {fileID: 2066886092}
   - {fileID: 1654905645}
   heroParent: {fileID: 884952709}
-  hook: {fileID: 0}
   powerUpSlider: {fileID: 273137004400772254}
   powerUpLevel: 050000000a0000000f00000014000000190000001e00000023000000
   arenaWinReward: 64000000c80000002c01000090010000f4010000
@@ -30137,22 +30134,20 @@ MonoBehaviour:
   isProcessingCards: 0
   isProcessingTrapCards: 0
   levels:
-  - numberOfPairs: 6
+  - numberOfPairs: 4
     cards:
     - {fileID: 11400000, guid: d7e01b5a974175741bb85226b24ed260, type: 2}
     - {fileID: 11400000, guid: fb5b9c2a9a2f1234d9e87fc2cab81194, type: 2}
-    - {fileID: 11400000, guid: fb5b9c2a9a2f1234d9e87fc2cab81194, type: 2}
-    - {fileID: 11400000, guid: fb5b9c2a9a2f1234d9e87fc2cab81194, type: 2}
-    - {fileID: 11400000, guid: fb5b9c2a9a2f1234d9e87fc2cab81194, type: 2}
-    - {fileID: 11400000, guid: fb5b9c2a9a2f1234d9e87fc2cab81194, type: 2}
+    - {fileID: 11400000, guid: b5d588d183c2ce64d98ab3c4c2d8d17c, type: 2}
+    - {fileID: 11400000, guid: 31407c62ed6ce4e469f2a749447d1b92, type: 2}
+    - {fileID: 11400000, guid: 4c7a0a16cee842449a51cff554bd6533, type: 2}
   allCards:
   - {fileID: 11400000, guid: d7e01b5a974175741bb85226b24ed260, type: 2}
+  - {fileID: 11400000, guid: b5d588d183c2ce64d98ab3c4c2d8d17c, type: 2}
+  - {fileID: 11400000, guid: 31407c62ed6ce4e469f2a749447d1b92, type: 2}
+  - {fileID: 11400000, guid: 4c7a0a16cee842449a51cff554bd6533, type: 2}
   - {fileID: 11400000, guid: fb5b9c2a9a2f1234d9e87fc2cab81194, type: 2}
-  - {fileID: 11400000, guid: fb5b9c2a9a2f1234d9e87fc2cab81194, type: 2}
-  - {fileID: 11400000, guid: fb5b9c2a9a2f1234d9e87fc2cab81194, type: 2}
-  - {fileID: 11400000, guid: fb5b9c2a9a2f1234d9e87fc2cab81194, type: 2}
-  - {fileID: 11400000, guid: fb5b9c2a9a2f1234d9e87fc2cab81194, type: 2}
-  - {fileID: 11400000, guid: fb5b9c2a9a2f1234d9e87fc2cab81194, type: 2}
+  - {fileID: 11400000, guid: 5ee9f0b8003ebc34ca2fdf83a9167344, type: 2}
   movesText: {fileID: 2873908175871390940}
   movesIcon: {fileID: 2873908174715206124}
   movesBackg: {fileID: 2873908174233130791}

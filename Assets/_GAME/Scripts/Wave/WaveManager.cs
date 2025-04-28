@@ -36,17 +36,11 @@ public class WaveManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        Hook.onThrowStarting += OnThrowStartingCallBack;
-        Hook.onThrowEnding += OnThrowEndingCallBack;
-
         TowerController.onGameLose += OnThrowStartingCallBack;
         EnemyTowerController.onGameWin += OnThrowStartingCallBack;
     }
     private void OnDestroy()
     {
-        Hook.onThrowStarting -= OnThrowStartingCallBack;
-        Hook.onThrowEnding -= OnThrowEndingCallBack;
-
         TowerController.onGameLose -= OnThrowStartingCallBack;
         EnemyTowerController.onGameWin -= OnThrowStartingCallBack;
     }
@@ -178,7 +172,6 @@ public class WaveManager : MonoBehaviour
             }
         }
 
-        // Dizi sýnýr kontrolü
         if (currentEnemyIndex >= segment.segmentEnemys.Length ||
             currentEnemySubIndex >= segment.segmentEnemys[currentEnemyIndex].enemy.Length)
         {

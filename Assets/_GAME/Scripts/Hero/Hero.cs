@@ -33,9 +33,6 @@ public abstract class Hero : MonoBehaviour
 
     private void Awake()
     {
-        Hook.onThrowStarting += OnThrowStartingCallBack;
-        Hook.onThrowEnding += OnThrowEndingCallBack;
-
         UpgradeSelectManager.heroDamageItem += PowerUpHeroDamage;
         UpgradeSelectManager.heroHealthItem += PowerUpHeroHealth;
 
@@ -47,9 +44,6 @@ public abstract class Hero : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Hook.onThrowStarting -= OnThrowStartingCallBack;
-        Hook.onThrowEnding -= OnThrowEndingCallBack;
-
         UpgradeSelectManager.heroDamageItem -= PowerUpHeroDamage;
         UpgradeSelectManager.heroHealthItem -= PowerUpHeroHealth;
 

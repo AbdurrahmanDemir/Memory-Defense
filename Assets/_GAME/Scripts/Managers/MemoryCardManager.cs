@@ -31,48 +31,73 @@ public class MemoryCardManager : MonoBehaviour
     [SerializeField] private Image movesBackg;
 
     public static Action OnMatchCard;
+    public static Action<string> OnMatchHero;
 
     private int totalPairs; 
     private int matchedPairs;
 
     public Levels GenerateLevel(int numberOfPairs)
     {
-
         Levels generatedLevel = new Levels();
         List<MemoryCardSO> selectedCards = new List<MemoryCardSO>();
 
         List<MemoryCardSO> shuffledCards = new List<MemoryCardSO>(allCards);
         ShuffleList(shuffledCards);
 
-        List<MemoryCardSO> heroCard = shuffledCards.Where(card => card.cardEffect== CardEffect.Hero).ToList();
-        List<MemoryCardSO> powerUpCard = shuffledCards.Where(card => card.cardEffect== CardEffect.PowerUp).ToList();
-        List<MemoryCardSO> trapCard = shuffledCards.Where(card => card.cardEffect== CardEffect.Trap).ToList();
-        List<MemoryCardSO> coinCard = shuffledCards.Where(card => card.cardEffect== CardEffect.Coin).ToList();
+        List<MemoryCardSO> heroCards = shuffledCards.Where(card => card.cardEffect == CardEffect.Hero).ToList();
+        List<MemoryCardSO> otherCards = shuffledCards.Where(card => card.cardEffect == CardEffect.PowerUp || card.cardEffect == CardEffect.Coin || card.cardEffect == CardEffect.Trap).ToList();
 
-        
-        foreach (MemoryCardSO card in heroCard)
+        Debug.Log("Hero Card Count: "+ heroCards.Count);
+        Debug.Log("Other Card Count: "+ otherCards.Count);
+
+        int heroNeeded = Mathf.CeilToInt(numberOfPairs * 0.6f);
+        int otherNeeded = numberOfPairs - heroNeeded;
+
+        for (int i = 0; i < heroNeeded; i++)
         {
-            if (selectedCards.Count >= numberOfPairs) break;
-
-            selectedCards.Add(card);
-            if (selectedCards.Count==4) break;
-        }
-
-        while (selectedCards.Count < numberOfPairs)
-        {            
-            if (powerUpCard.Count > 0)
+            if (heroCards.Count > 0)
             {
-                selectedCards.Add(powerUpCard[0]);
-                powerUpCard.RemoveAt(0);
+                selectedCards.Add(heroCards[0]);
+                heroCards.RemoveAt(0);
             }
             else
             {
-                Debug.LogWarning("No more cards available to generate the level!");
-                break;
+                if (otherCards.Count > 0)
+                {
+                    selectedCards.Add(otherCards[0]);
+                    otherCards.RemoveAt(0);
+                }
+                else
+                {
+                    Debug.LogWarning("Yeterli kart bulunamadý!");
+                    break;
+                }
             }
         }
 
-        // Çiftler oluþturmak için listeyi ikiye katla.
+        for (int i = 0; i < otherNeeded; i++)
+        {
+            if (otherCards.Count > 0)
+            {
+                selectedCards.Add(otherCards[0]);
+                otherCards.RemoveAt(0);
+                Debug.Log("other kart var");
+            }
+            else
+            {
+                if (heroCards.Count > 0)
+                {
+                    selectedCards.Add(heroCards[0]);
+                    heroCards.RemoveAt(0);
+                }
+                else
+                {
+                    Debug.LogWarning("Yeterli kart bulunamadý!");
+                    break;
+                }
+            }
+        }
+
         List<MemoryCardSO> pairedCards = new List<MemoryCardSO>();
         foreach (MemoryCardSO card in selectedCards)
         {
@@ -89,6 +114,9 @@ public class MemoryCardManager : MonoBehaviour
 
 
 
+
+
+
     private void ShuffleList<T>(List<T> list)
     {
         for (int i = 0; i < list.Count; i++)
@@ -102,7 +130,7 @@ public class MemoryCardManager : MonoBehaviour
 
     public void GamePlay()
     {
-        if (DataManager.instance.TryPurchaseEnergy(1))
+        if (DataManager.instance.TryPurchaseEnergy(0))
         {
             //UIManager.instance.GameUIStageChanged(GameState.Game);
             StartLevel(/*LevelManager.instance.LoadLevel()*/ 0);
@@ -131,7 +159,7 @@ public class MemoryCardManager : MonoBehaviour
         ShuffleCards(currentCards);
         InstantiateCards();
 
-        totalPairs = 6;
+        totalPairs = currentLevel.numberOfPairs;
         matchedPairs = 0;
 
         movesRemaining = 2;
@@ -187,6 +215,7 @@ public class MemoryCardManager : MonoBehaviour
 
         if (firstSelectedCard.cardData.cardName == secondSelectedCard.cardData.cardName)
         {
+            PlayAttackEffect(firstSelectedCard.gameObject, secondSelectedCard.gameObject);
             ApplyCardEffect(firstSelectedCard);
             yield return new WaitForSeconds(1.2f);
             firstSelectedCard.gameObject.SetActive(false);
@@ -264,7 +293,8 @@ public class MemoryCardManager : MonoBehaviour
                 Debug.Log("powerup geldiiiii");
                 break;
             case CardEffect.Hero:
-                Debug.Log("Hero geldiiiii");
+                OnMatchHero?.Invoke(card.cardData.cardName);
+                Debug.Log(card.cardData.cardName);
                 break;
             case CardEffect.Coin:
                 DataManager.instance.AddGold(card.cardData.effectValue);
@@ -278,7 +308,23 @@ public class MemoryCardManager : MonoBehaviour
         secondCard.transform.DOShakePosition(0.5f, strength: new Vector3(10, 0, 0), vibrato: 10, randomness: 90, snapping: false, fadeOut: true);
     }
 
-   
+    private void PlayAttackEffect(GameObject firstCard, GameObject secondCard)
+    {
+        Vector3 targetPosition = new Vector3(0, 300, 0);
+
+        float moveDuration = 0.3f;
+        float attackDuration = 0.3f;
+
+        firstCard.transform.DOMove(firstCard.transform.position + targetPosition, moveDuration).OnComplete(() =>
+        {
+            firstCard.transform.DOMoveY(firstCard.transform.position.x + 20f, attackDuration).SetLoops(2, LoopType.Yoyo);
+        });
+
+        secondCard.transform.DOMove(secondCard.transform.position + targetPosition, moveDuration).OnComplete(() =>
+        {
+            secondCard.transform.DOMoveY(secondCard.transform.position.x + 20f, attackDuration).SetLoops(2, LoopType.Yoyo);
+        });
+    }
     public void MoveUpdate(int damage)
     {
         movesRemaining -= damage;
